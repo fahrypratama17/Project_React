@@ -51,6 +51,14 @@
     h4 {
         @apply text-2xl lg:text-[22px]
     }
+
+    .navbar {
+        @apply lg:hidden fixed top-0 left-0 bg-white w-full h-screen flex flex-col items-center justify-center -translate-y-full transition-transform z-40;
+    }
+
+    .navbar.active {
+        @apply translate-y-0
+    }
 }
 
 @layer components {
