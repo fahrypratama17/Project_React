@@ -33,13 +33,13 @@ const Header = () => {
             ))}
           </ul>
 
-          {/* Login btn */}
+          {/* Login button */}
           <button className="primary-btn mt-12 max-w-40 w-full">
             Login
           </button>
         </nav>
 
-        {/* Menu btn */}
+        {/* Menu button */}
         <button className="lg:hidden" onClick={handleClick}>
           <RiMenuLine/>
         </button>
@@ -56,7 +56,7 @@ const Header = () => {
           </ul>
 
 
-          {/* Lg Login btn */}
+          {/* Lg Login button */}
           <button className="max-lg:hidden primary-btn">
             Login
           </button>
