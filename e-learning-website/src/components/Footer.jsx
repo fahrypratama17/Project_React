@@ -1,14 +1,21 @@
 import React from 'react'
 import {contactInfo, footerLists, socialIcons} from "../constant/data.js";
+import { motion } from "motion/react";
+import * as variants from '../motion/animation.js'
 
 const Footer = () => {
   return (
     <footer className="pt-14 pb-8 bg-white">
-      <div className="container">
+      <motion.div
+        variants={variants.staggerContainer}
+        initial='hidden'
+        whileInView='show'
+        viewport={{once: true}}
+        className="container">
 
         {/* Footer top */}
         <div className="grid gap-10 sm:grid-cols-2 lg:grid-cols-[1fr_0.7fr_0.7fr_0.7fr]">
-          <div>
+          <motion.div variants={variants.fadeInUp}>
             <div>
               <img src="/images/logo.png"
                    alt="footer logo"
@@ -24,10 +31,10 @@ const Footer = () => {
                 </a>
               ))}
             </div>
-          </div>
+          </motion.div>
 
           {footerLists.map((list) => (
-            <div key={list.id} className="space-y-3">
+            <motion.div variants={variants.fadeInUp} key={list.id} className="space-y-3">
               <p className="text-lg font-semibold">{list.title}</p>
               <ul className="space-y-2.5">
                 {list.links.map((link, index) => (
@@ -36,10 +43,10 @@ const Footer = () => {
                   </li>
                 ))}
               </ul>
-            </div>
+            </motion.div>
           ))}
 
-          <div>
+          <motion.div variants={variants.fadeInUp}>
             <p className="text-lg font-semibold">Social Profiles</p>
             <div className="flex mt-5 gap-3">
               {socialIcons.map((icon) => (
@@ -48,14 +55,14 @@ const Footer = () => {
                 </button>
               ))}
             </div>
-          </div>
+          </motion.div>
 
         </div>
 
         {/* Footer bottom */}
-        <p className="mt-16 text-center lg:mt-20">&copy; {new Date().getFullYear()} Skillbridge. All rights reserved.</p>
+        <motion.p variants={variants.fadeInUp} className="mt-16 text-center lg:mt-20">&copy; {new Date().getFullYear()} Skillbridge. All rights reserved.</motion.p>
 
-      </div>
+      </motion.div>
     </footer>
   );
 };
