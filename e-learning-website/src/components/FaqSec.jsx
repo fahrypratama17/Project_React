@@ -2,6 +2,8 @@ import React, { useState } from 'react'
 import Title from "./Title.jsx";
 import { faqItems } from "../constant/data.js";
 import {RiAddLine} from "@remixicon/react";
+import { motion } from "motion/react";
+import * as variants from '../motion/animation.js'
 
 const FaqSec = () => {
   const [openId, setOpenId] = useState(null);
@@ -11,8 +13,14 @@ const FaqSec = () => {
 
   return (
     <section className="section pb-[90px] lg:mb-[160px]">
-      <div className="container">
-        <div className="grid gap-10 p-5 lg:grid-cols-[0.7fr_1fr] items-start bg-white rounded-lg md:p-10">
+      <motion.div
+        variants={variants.staggerContainer}
+        initial='hidden'
+        whileInView='show'
+        viewport={{once: true}}
+        className="container">
+
+        <motion.div variants={variants.fadeInUp} className="grid gap-10 p-5 lg:grid-cols-[0.7fr_1fr] items-start bg-white rounded-lg md:p-10">
           {/* Title */}
           <Title title='Frequently Asked Questions' text='Still you have any questions? Contact our Team via support@skillbridge.com' link='See All FAQ’s' />
 
@@ -35,8 +43,8 @@ const FaqSec = () => {
               </div>
             ))}
           </div>
-        </div>
-      </div>
+        </motion.div>
+      </motion.div>
     </section>
   );
 };

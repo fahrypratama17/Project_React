@@ -1,16 +1,24 @@
 import React from 'react'
 import Title from "./Title.jsx";
 import { coursesSecItems } from "../constant/data.js";
+import { motion } from "motion/react";
+import * as variants from '../motion/animation.js'
 
 const Courses = () => {
   return (
     <section className="section">
-      <div className="container">
+      <motion.div
+        variants={variants.staggerContainer}
+        initial='hidden'
+        whileInView='show'
+        viewport={{once: true}}
+        className="container">
+
         {/* Title */}
         <Title title='Our Courses' text='Lorem ipsum dolor sit amet consectetur. Tempus tincidunt etiam eget elit id imperdiet et. Cras eu sit dignissim lorem nibh et. Ac cum eget habitasse in velit fringilla feugiat senectus in.' link='View All'/>
 
         {/* Card wrapper */}
-        <div className="grid gap-5 lg:grid-cols-2 mt-8 lg:mt-16">
+        <motion.div variants={variants.fadeInUp} className="grid gap-5 lg:grid-cols-2 mt-8 lg:mt-16">
           {coursesSecItems.map((item) => (
 
             // Card
@@ -38,8 +46,8 @@ const Courses = () => {
             </div>
           ))}
 
-        </div>
-      </div>
+        </motion.div>
+      </motion.div>
     </section>
   );
 };

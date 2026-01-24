@@ -2,16 +2,24 @@ import React from 'react'
 import Title from "./Title.jsx";
 import {benefitItems} from "../constant/data.js";
 import {RiArrowRightUpLine} from "@remixicon/react";
+import { motion } from "motion/react";
+import * as variants from '../motion/animation.js'
 
 const Benefits = () => {
   return (
     <section className="section">
-      <div className="container">
+      <motion.div
+        variants={variants.staggerContainer}
+        initial='hidden'
+        whileInView='show'
+        viewport={{once: true}}
+        className="container">
+
         {/* Title */}
         <Title title='Benefits' text='Lorem ipsum dolor sit amet consectetur. Tempus tincidunt etiam eget elit id imperdiet et. Cras eu sit dignissim lorem nibh et. Ac cum eget habitasse in velit fringilla feugiat senectus in.' link='View All'/>
 
         {/* Card wrapper */}
-        <div className="grid gap-5 md:grid-cols-2 lg:grid-cols-3 mt-12 lg:mt-16">
+        <motion.div variants={variants.fadeInUp} className="grid gap-5 md:grid-cols-2 lg:grid-cols-3 mt-12 lg:mt-16">
           {benefitItems.map((item) => (
           // Card
             <div className="bg-white p-10 flex flex-col rounded-xl" key={item.id}>
@@ -31,8 +39,8 @@ const Benefits = () => {
               </button>
             </div>
           ))}
-        </div>
-      </div>
+        </motion.div>
+      </motion.div>
     </section>
   );
 };
