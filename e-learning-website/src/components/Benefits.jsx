@@ -16,18 +16,18 @@ const Benefits = () => {
           // Card
             <div className="bg-white p-10 flex flex-col rounded-xl" key={item.id}>
               {/* Icon */}
-              <div className="bg-orange-75 w-[55%] h-24 flex items-center justify-center mx-auto rounded-xl">
+              <div className="bg-orange-75 w-[55%] h-24 flex items-center justify-center mx-auto rounded-xl mb-8">
                 <img src={item.icon} alt={item.title} width={64} height={64} />
               </div>
               {/* Content */}
-              <div className="">
+              <div className="mb-4 text-center space-y-3.5">
                 <h4>{item.title}</h4>
                 <p>{item.text}</p>
               </div>
 
               {/* Button */}
-              <button>
-                <RiArrowRightUpLine size={26}/>
+              <button className="mt-auto ml-auto border border-white-95 w-24 h-14 flex items-center justify-center rounded-md text-orange-50 transition-colors hover:bg-orange-50 hover:text-white">
+                <RiArrowRightUpLine size={26} />
               </button>
             </div>
           ))}
