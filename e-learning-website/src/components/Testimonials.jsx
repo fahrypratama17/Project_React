@@ -32,6 +32,11 @@ const Testimonials = () => {
                   prevEl: '.prev-btn',
                   nextEl: '.next-btn'
                 }}
+                autoplay={{
+                  delay: 3000,
+                  pauseOnMouseEnter: true,
+                  disableOnInteraction: false,
+                }}
                 className="mt-14 lg:mt-16">
 
           {testimonialsItems.map((item) => (

@@ -5,6 +5,7 @@ import Benefits from "./components/Benefits.jsx";
 import Courses from "./components/Courses.jsx";
 import Testimonials from "./components/Testimonials.jsx";
 import FaqSec from "./components/FaqSec.jsx";
+import Footer from "./components/Footer.jsx";
 
 const App = () => {
   return (
@@ -17,6 +18,7 @@ const App = () => {
         <Testimonials />
         <FaqSec />
       </main>
+      <Footer />
     </>
   );
 };
