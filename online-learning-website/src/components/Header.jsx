@@ -1,25 +1,30 @@
-import React from "react";
+import React, { useState } from "react";
 import Logo from "./Logo.jsx";
-import { RiArrowDownSLine, RiMenuLine } from "@remixicon/react";
+import { RiArrowDownSLine, RiCloseLine, RiMenuLine } from "@remixicon/react";
 import { navItems } from "../data/data.js";
 import SearchInput from "./SearchInput.jsx";
 import Button from "./Button.jsx";
 
 const Header = () => {
+  const [isOpen, setIsOpen] = useState(false);
+
   return (
     <header className="sticky top-0 left-0 z-50 w-full border-b border-neutral-200 bg-white py-4">
-      <div className="flex items-center justify-between px-4 sm:px-8">
+      <div className="flex flex-wrap items-center justify-between px-4 sm:px-8">
         {/* Logo */}
         <Logo />
 
         {/* Mobile menu */}
         <nav className="relative lg:hidden">
-          <button className="shadow-util rounded-full p-3 font-medium transition-colors hover:bg-neutral-100 focus:bg-neutral-100">
-            <RiMenuLine />
+          <button
+            className="shadow-util rounded-full p-3 font-medium transition-colors hover:bg-neutral-100 focus:bg-neutral-100"
+            onClick={() => setIsOpen(!isOpen)}
+          >
+            {isOpen ? <RiCloseLine /> : <RiMenuLine />}
           </button>
 
           <ul
-            className={`shadow-util invisible absolute top-full right-0 mt-3 w-full min-w-[200px] rounded-lg bg-white opacity-0 transition`}
+            className={`shadow-util invisible absolute top-full right-0 mt-3 w-full min-w-[200px] rounded-lg bg-white opacity-0 transition ${isOpen ? "visible opacity-100" : ""}`}
           >
             {navItems.map((item) => (
               <li key={item.id} className="group relative">
@@ -28,7 +33,9 @@ const Header = () => {
                   className="flex items-center justify-between gap-1 rounded-lg px-4 py-1.5 text-gray-600 transition-all hover:bg-lime-50 hover:text-lime-600"
                 >
                   {item.label}
-                  {item.hasDropdown && <RiArrowDownSLine />}
+                  {item.hasDropdown && (
+                    <RiArrowDownSLine className="transition-transform group-hover:rotate-180 group-focus:rotate-180" />
+                  )}
                 </a>
                 {item.hasDropdown && (
                   <ul className="shadow-util invisible absolute top-full right-0 z-50 mt-1 min-w-[200px] overflow-hidden rounded-lg border border-neutral-200 bg-white opacity-0 transition-all duration-200 group-hover:visible group-hover:opacity-100">
