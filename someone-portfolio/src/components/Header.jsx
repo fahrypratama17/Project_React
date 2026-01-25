@@ -1,11 +1,34 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect, useRef } from 'react'
 import { navItems } from "../constant/data.js";
 
 const Header = () => {
   const [isOpen, setIsOpen] = useState(false);
+  const headerRef = useRef(null);
+  const [activeLink, setActiveLink] = useState(navItems[0].id);
+
+  const handleLinkClick = (id) =>  {
+    setActiveLink(id);
+    setIsOpen(false);
+  }
+
+  useEffect(() => {
+    const handleScroll = () => {
+      if (window.scrollY > 100) {
+        headerRef.current.classList.add("active");
+      } else {
+        headerRef.current.classList.remove("active");
+      }
+    };
+
+    window.addEventListener('scroll', handleScroll)
+
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+    }
+  }, []);
 
   return (
-    <header className="header">
+    <header ref={headerRef} className="header">
       <div className="container flex items-center justify-between">
         
         {/* Logo */}
@@ -16,7 +39,7 @@ const Header = () => {
           <ul className="text-center space-y-6 p-7">
             {navItems.map(item => (
               <li key={item.id}>
-                <a href={item.href} className="text-lg py-3 relative after:absolute after:bottom-0 after:left-0 after:bg-white after:w-0 after:h-0.5 after:rounded hover:after:w-full after:transition-[width] duration-300">{item.label}</a>
+                <a href={item.href} className={`text-lg py-3 relative after:absolute after:bottom-0 after:left-0 after:bg-white after:w-0 after:h-0.5 after:rounded hover:after:w-full after:transition-[width] duration-300 ${activeLink === item.id ? "after:w-full" : ""}`} onClick={() => handleLinkClick(item.id)}>{item.label}</a>
               </li>
             ))}
           </ul>
@@ -27,7 +50,7 @@ const Header = () => {
           <ul className="hidden lg:flex gap-8 items-center">
             {navItems.map(item => (
               <li key={item.id}>
-                <a href={item.href} className="text-lg py-3 relative after:absolute after:bottom-0 after:left-0 after:bg-white after:w-0 after:h-0.5 after:rounded hover:after:w-full after:transition-[width] duration-300">{item.label}</a>
+                <a href={item.href} className={`text-lg py-3 relative after:absolute after:bottom-0 after:left-0 after:bg-white after:w-0 after:h-0.5 after:rounded hover:after:w-full after:transition-[width] duration-300 ${activeLink === item.id ? "after:w-full" : ""}`} onClick={() => handleLinkClick(item.id)}>{item.label}</a>
               </li>
             ))}
           </ul>

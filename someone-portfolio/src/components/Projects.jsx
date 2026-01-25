@@ -4,7 +4,7 @@ import {ProjectsItems} from "../constant/data.js";
 
 const Projects = () => {
   return (
-    <section>
+    <section id="projects">
       <div className="container">
         <h2>Recent Projects</h2>
 

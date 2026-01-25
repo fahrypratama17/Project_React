@@ -4,7 +4,7 @@ import {RiGithubFill, RiLinkedinBoxFill} from "@remixicon/react";
 
 const Contact = () => {
   return (
-    <section className="py-20">
+    <section className="py-20" id="contact">
       <div className="container grid gap-10 md:grid-cols-2 md:divide-x md:divide-neutral-800">
 
         <div>

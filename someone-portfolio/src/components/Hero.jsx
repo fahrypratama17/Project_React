@@ -5,7 +5,7 @@ import Button from "./Button.jsx";
 
 const Hero = () => {
   return (
-    <section className="py-28 lg:pt-40">
+    <section className="py-28 lg:pt-40" id="home">
       <div className="container flex flex-col items-center">
         
         {/* Image */}
