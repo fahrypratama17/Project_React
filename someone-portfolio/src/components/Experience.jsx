@@ -1,16 +1,24 @@
 import React from 'react'
 import {ResumeItems} from "../constant/data.js";
+import { motion} from "motion/react";
+import {fadeInUp, staggerContainer} from "../motion/animation.js";
 
 const Experience = () => {
   return (
     <section className="section" id="resume">
-      <div className="container">
-        <h2>My Resume</h2>
+      <motion.div
+        variants={staggerContainer}
+        initial='hidden'
+        whileInView='show'
+        viewport={{ once: true }}
+        className="container">
+
+        <motion.h2 variants={fadeInUp}>My Resume</motion.h2>
 
         {/* Wrapper */}
         <div className="grid gap-10 lg:grid-cols-2 lg:gap-20">
           {ResumeItems.map(item => (
-            <div key={item.id} className="divide-y divide-neutral-800">
+            <motion.div variants={fadeInUp} key={item.id} className="divide-y divide-neutral-800">
 
               <h3 className="text-2xl font-semibold mt-8 pb-3">{item.title}</h3>
 
@@ -27,10 +35,10 @@ const Experience = () => {
                 ))}
               </div>
 
-            </div>
+            </motion.div>
           ))}
         </div>
-      </div>
+      </motion.div>
     </section>
   );
 };
