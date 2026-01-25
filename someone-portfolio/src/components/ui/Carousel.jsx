@@ -94,7 +94,7 @@ const Slide = ({
           )}
         </div>
 
-        <articleqqqq
+        <article
           className={`relative p-[4vmin] transition-opacity duration-1000 ease-in-out ${
             current === index ? "opacity-100 visible" : "opacity-0 invisible"
           }`}>
@@ -108,7 +108,7 @@ const Slide = ({
               <a href="#" target="_blank"><RiArrowRightUpLongLine /></a>
             </button>
           </div>
-        </articleqqqq>
+        </article>
       </li>
     </div>
   );

@@ -4,6 +4,7 @@ import Hero from "./components/Hero.jsx";
 import About from "./components/About.jsx";
 import Experience from "./components/Experience.jsx";
 import Projects from "./components/Projects.jsx";
+import Contact from "./components/Contact.jsx";
 
 const App = () => {
   return (
@@ -14,6 +15,7 @@ const App = () => {
         <About />
         <Experience />
         <Projects />
+        <Contact />
       </main>
     </>
   );
