@@ -1,12 +1,15 @@
 import React from "react";
 import Header from "./components/Header.jsx";
 import Footer from "./components/Footer.jsx";
+import Hero from "./components/Hero.jsx";
 
 const App = () => {
   return (
     <>
       <Header />
-      <main></main>
+      <main>
+        <Hero />
+      </main>
       <Footer />
     </>
   );
