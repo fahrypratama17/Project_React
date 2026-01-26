@@ -6,6 +6,7 @@ import BrandBanner from "./components/BrandBanner.jsx";
 import CourseCategories from "./components/CourseCategories.jsx";
 import Courses from "./components/Courses.jsx";
 import WhyLearnLive from "./components/WhyLearnLive.jsx";
+import Testimonials from "./components/Testimonials.jsx";
 
 const App = () => {
   return (
@@ -17,6 +18,7 @@ const App = () => {
         <CourseCategories />
         <Courses />
         <WhyLearnLive />
+        <Testimonials />
       </main>
       <Footer />
     </>
