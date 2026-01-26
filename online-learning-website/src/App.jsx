@@ -5,6 +5,7 @@ import Hero from "./components/Hero.jsx";
 import BrandBanner from "./components/BrandBanner.jsx";
 import CourseCategories from "./components/CourseCategories.jsx";
 import Courses from "./components/Courses.jsx";
+import WhyLearnLive from "./components/WhyLearnLive.jsx";
 
 const App = () => {
   return (
@@ -15,6 +16,7 @@ const App = () => {
         <BrandBanner />
         <CourseCategories />
         <Courses />
+        <WhyLearnLive />
       </main>
       <Footer />
     </>
