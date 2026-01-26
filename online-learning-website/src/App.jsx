@@ -3,6 +3,7 @@ import Header from "./components/Header.jsx";
 import Footer from "./components/Footer.jsx";
 import Hero from "./components/Hero.jsx";
 import BrandBanner from "./components/BrandBanner.jsx";
+import CourseCategories from "./components/CourseCategories.jsx";
 
 const App = () => {
   return (
@@ -11,6 +12,7 @@ const App = () => {
       <main>
         <Hero />
         <BrandBanner />
+        <CourseCategories />
       </main>
       <Footer />
     </>
