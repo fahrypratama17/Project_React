@@ -1,6 +1,7 @@
 import React from "react";
 import { words } from "../constants/index.js";
 import Button from "../components/Button.jsx";
+import HeroExperience from "../components/HeroModels/HeroExperience.jsx";
 
 const Hero = () => {
   return (
@@ -19,7 +20,7 @@ const Hero = () => {
                   <span className="wrapper">
                     {words.map((item) => (
                       <span
-                        key={item.text}
+                        key={item.id}
                         className="flex items-center gap-1 pb-2 md:gap-3"
                       >
                         <img
@@ -48,6 +49,12 @@ const Hero = () => {
             />
           </div>
         </header>
+
+        <figure>
+          <div className="hero-3d-layout">
+            <HeroExperience />
+          </div>
+        </figure>
       </div>
     </section>
   );
