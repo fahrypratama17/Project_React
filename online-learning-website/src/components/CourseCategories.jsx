@@ -1,16 +1,28 @@
 import React from "react";
 import { categoriesItems } from "../data/data.js";
+import { motion } from "motion/react";
+import * as variants from "../motion/animation.js";
+import { fadeInUp } from "../motion/animation.js";
 
 const CourseCategories = () => {
   return (
     <section className="pt-20">
-      <div className="container">
-        <h2 className="section-title text-center">
+      <motion.div
+        variants={variants.staggerContainer}
+        initial={"hidden"}
+        whileInView={"show"}
+        viewport={{ once: true }}
+        className="container"
+      >
+        <motion.h2 variants={fadeInUp} className="section-title text-center">
           Explore 4000+ Free <br />
           Online courses
-        </h2>
+        </motion.h2>
 
-        <div className="mt-11 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
+        <motion.div
+          variants={fadeInUp}
+          className="mt-11 grid gap-6 sm:grid-cols-2 lg:grid-cols-4"
+        >
           {categoriesItems.map((item) => (
             <div
               className="hover:shadow-[3px_3px_0px_0px_rgba(0, 0, 0, 1)] focus:shadow-[3px_3px_0px_0px_rgba(0, 0, 0, 1)] cursor-pointer rounded-xl border border-neutral-200 bg-white p-6 transition hover:border-black focus:border-black"
@@ -23,8 +35,8 @@ const CourseCategories = () => {
               <p className="text">{item.desc}</p>
             </div>
           ))}
-        </div>
-      </div>
+        </motion.div>
+      </motion.div>
     </section>
   );
 };

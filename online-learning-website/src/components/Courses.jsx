@@ -2,6 +2,9 @@ import React, { act, useState } from "react";
 import { courses } from "../data/data.js";
 import { RiStarFill } from "@remixicon/react";
 import Button from "./Button.jsx";
+import { motion } from "motion/react";
+import * as variants from "../motion/animation.js";
+import { fadeIn, fadeInUp } from "../motion/animation.js";
 
 const Courses = () => {
   const [activeTab, setActiveTab] = useState("All");
@@ -12,19 +15,30 @@ const Courses = () => {
 
   return (
     <section className="bg-gray-50 py-20">
-      <div className="container">
+      <motion.div
+        variants={variants.staggerContainer}
+        initial={"hidden"}
+        whileInView={"show"}
+        viewport={{ once: true }}
+        className="container"
+      >
         <div className="space-y-2.5 text-center">
-          <h2 className="section-title">Explore courses</h2>
-          <p className="text mx-auto max-w-2xl">
+          <motion.h2 variants={fadeInUp} className="section-title">
+            Explore courses
+          </motion.h2>
+          <motion.p variants={fadeInUp} className="text mx-auto max-w-2xl">
             Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusamus
             autem, blanditiis consectetur culpa dignissimos eius fugiat
             inventore numquam placeat, praesentium repudiandae sunt, tempore
             veritatis!
-          </p>
+          </motion.p>
         </div>
 
         <div className="mt-7">
-          <div className="flex flex-wrap justify-center gap-4">
+          <motion.div
+            variants={fadeInUp}
+            className="flex flex-wrap justify-center gap-4"
+          >
             {["All", "Popular", "Recent", "Design", "Marketing", "Coding"].map(
               (tab) => (
                 <button
@@ -36,11 +50,12 @@ const Courses = () => {
                 </button>
               ),
             )}
-          </div>
+          </motion.div>
 
           <div className="mt-10 grid gap-5 sm:mt-14 sm:grid-cols-2 lg:grid-cols-3">
             {filteredCourses.map((course) => (
-              <div
+              <motion.div
+                variants={fadeInUp}
                 className="overflow-hidden rounded-xl border border-neutral-200 bg-white transition hover:shadow-[3px_3px_0px_0px_rgba(0,0,0,1)] focus:border-black focus:shadow-[3px_3px_0px_0px_rgba(0,0,0,1)]"
                 key={course.id}
               >
@@ -75,16 +90,18 @@ const Courses = () => {
                     <p className="text-lg font-bold">${course.price}</p>
                   </div>
                 </div>
-              </div>
+              </motion.div>
             ))}
           </div>
-          <Button
-            label="Explore all courses"
-            primary
-            classes={`mt-12 mx-auto block`}
-          />
+          <motion.div variants={fadeIn}>
+            <Button
+              label="Explore all courses"
+              primary
+              classes={`mt-12 mx-auto block`}
+            />
+          </motion.div>
         </div>
-      </div>
+      </motion.div>
     </section>
   );
 };
