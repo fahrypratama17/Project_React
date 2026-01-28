@@ -1,0 +1,70 @@
+import { Link, NavLink } from "react-router";
+import { sidebarItems } from "~/constants";
+import { cn } from "~/lib/util";
+
+const NavItems = () => {
+  const user = {
+    name: "Fahry",
+    email: "m.fahry.pratama.putra@gmail.com",
+    imageUrl: "/assets/images/david.webp",
+  };
+
+  return (
+    <section className="nav-items">
+      <Link to="/" className="link-logo">
+        <img src="/assets/icons/logo.svg" alt="logo" className="size-[30px]" />
+        <h1>Tourvisto</h1>
+      </Link>
+
+      <div className="container">
+        <nav>
+          {sidebarItems.map(({ id, href, icon, label }) => (
+            <NavLink to={href} key={id}>
+              {({ isActive }: { isActive: boolean }) => (
+                <div
+                  className={cn("group nav-item", {
+                    "bg-primary-100 !text-white": isActive,
+                  })}
+                >
+                  <img
+                    src={icon}
+                    alt={label}
+                    className={`size-0 group-hover:brightness-0 group-hover:invert`}
+                  />
+                  {label}
+                </div>
+              )}
+            </NavLink>
+          ))}
+        </nav>
+
+        <footer className="nav-footer">
+          <img
+            src={user?.imageUrl || "/assets/images/david.webp"}
+            alt={user?.name || "Fahry"}
+          />
+
+          <article>
+            <h2>{user?.name}</h2>
+            <p>{user?.email}</p>
+          </article>
+
+          <button
+            onClick={() => {
+              console.log("Logout");
+            }}
+            className="cursor-pointer"
+          >
+            <img
+              src="/assets/icons/logout.svg"
+              alt="logout"
+              className="side-6"
+            />
+          </button>
+        </footer>
+      </div>
+    </section>
+  );
+};
+
+export default NavItems;
