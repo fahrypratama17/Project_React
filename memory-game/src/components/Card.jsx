@@ -1,7 +1,7 @@
 const Card = ({ card, flip }) => {
   return (
     <div
-      className={`card ${card.isFlipped ? "flipped" : ""}`}
+      className={`card ${card.isFlipped ? "flipped" : ""} ${card.isMatched ? "matched" : ""}`}
       onClick={() => flip(card)}
     >
       <div className="card-front">?</div>
