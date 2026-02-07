@@ -182,11 +182,11 @@ body {
 /* Progress bar fill effect */
 .progress-bar {
   background: linear-gradient(
-          to right,
-          #10b981 0%,
-          #10b981 var(--progress, 0%),
-          rgba(255, 255, 255, 0.2) var(--progress, 0%),
-          rgba(255, 255, 255, 0.2) 100%
+    to right,
+    #10b981 0%,
+    #10b981 var(--progress, 0%),
+    rgba(255, 255, 255, 0.2) var(--progress, 0%),
+    rgba(255, 255, 255, 0.2) 100%
   );
 }
 
@@ -326,9 +326,9 @@ body {
 
 .playlist-track.active {
   background: linear-gradient(
-          45deg,
-          rgba(16, 185, 129, 0.2),
-          rgba(5, 150, 105, 0.2)
+    45deg,
+    rgba(16, 185, 129, 0.2),
+    rgba(5, 150, 105, 0.2)
   );
   border-color: rgba(16, 185, 129, 0.5);
   box-shadow: 0 4px 15px rgba(16, 185, 129, 0.2);
@@ -475,9 +475,9 @@ body {
 
 .song-card.active {
   background: linear-gradient(
-          45deg,
-          rgba(16, 185, 129, 0.2),
-          rgba(5, 150, 105, 0.2)
+    45deg,
+    rgba(16, 185, 129, 0.2),
+    rgba(5, 150, 105, 0.2)
   );
   border-color: rgba(16, 185, 129, 0.5);
   box-shadow: 0 4px 15px rgba(16, 185, 129, 0.2);
@@ -744,9 +744,9 @@ body {
 
 .playlist-song.active {
   background: linear-gradient(
-          45deg,
-          rgba(16, 185, 129, 0.2),
-          rgba(5, 150, 105, 0.2)
+    45deg,
+    rgba(16, 185, 129, 0.2),
+    rgba(5, 150, 105, 0.2)
   );
   border-color: rgba(16, 185, 129, 0.5);
 }
