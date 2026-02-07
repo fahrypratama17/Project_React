@@ -27,6 +27,7 @@ const App = () => {
   const [matchedCards, setMatchCard] = useState([]);
   const [score, setScore] = useState(0);
   const [moves, setMoves] = useState(0);
+  const [isLocked, setIsLocked] = useState(false);
 
   const initializeGame = () => {
     // Shuffle the cards
@@ -39,15 +40,21 @@ const App = () => {
     }));
 
     setCards(finalCards);
+    setIsLocked(false);
+    setMoves(0);
+    setScore(0);
+    setFlippedCards([]);
+    setMatchCard([]);
   };
-
-  useEffect(() => {
-    initializeGame();
-  }, []);
 
   const handleFlip = (card) => {
     // Don't allow clicking if card is already flipped or already matched
-    if (card.isFlipped || card.isMatched) {
+    if (
+      card.isFlipped ||
+      card.isMatched ||
+      isLocked ||
+      flippedCards.length === 2
+    ) {
       return;
     }
 
@@ -67,6 +74,7 @@ const App = () => {
 
     // Check for match if two cards are flipped
     if (flippedCards.length === 1) {
+      setIsLocked(true);
       const firstCard = cards[flippedCards[0]];
 
       if (firstCard.value === card.value) {
@@ -83,6 +91,7 @@ const App = () => {
               }
             }),
           );
+          setIsLocked(false);
           setFlippedCards([]);
         }, 500);
       } else {
@@ -99,6 +108,7 @@ const App = () => {
           setCards(flippedBackCard);
 
           setFlippedCards([]);
+          setIsLocked(false);
         }, 1000);
       }
 
@@ -108,7 +118,7 @@ const App = () => {
 
   return (
     <div className="app">
-      <GameHeader score={score} moves={moves} />
+      <GameHeader score={score} moves={moves} onReset={initializeGame} />
 
       <div className="cards-grid">
         {cards.map((item) => (
