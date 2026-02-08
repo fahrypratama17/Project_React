@@ -1,6 +1,6 @@
 import { useMusic } from "../hooks/use-music.js";
 import { useEffect, useRef } from "react";
-import { StepBack, StepForward, Play } from "lucide-react";
+import { StepBack, StepForward, Play, Pause } from "lucide-react";
 
 const MusicPlayer = () => {
   const {
@@ -12,8 +12,22 @@ const MusicPlayer = () => {
     setDuration,
     prevTrack,
     nextTrack,
+    isPlaying,
+    play,
+    pause,
   } = useMusic();
   const audioRef = useRef(null);
+
+  useEffect(() => {
+    const audio = audioRef.current;
+    if (!audio) return;
+
+    if (isPlaying) {
+      audio.play().catch((err) => console.error(err));
+    } else {
+      audio.pause();
+    }
+  }, [isPlaying]);
 
   useEffect(() => {
     const audio = audioRef.current;
@@ -25,14 +39,20 @@ const MusicPlayer = () => {
       console.log(audio.duration);
     };
 
-    const handleTimeUpdate = () => {};
+    const handleTimeUpdate = () => {
+      setCurrentTime(audio.currentTime);
+    };
 
     const handleEnded = () => {};
 
     audio.addEventListener("loadedmetadata", handleLoadedMetadata);
+    audio.addEventListener("timeupdate", handleTimeUpdate);
+    audio.addEventListener("ended", handleTimeUpdate);
 
     return () => {
       audio.removeEventListener("loadedmetadata", handleLoadedMetadata);
+      audio.removeEventListener("timeupdate", handleTimeUpdate);
+      audio.removeEventListener("ended", handleTimeUpdate);
     };
   }, [setDuration, setCurrentTime, currentTrack]);
 
@@ -68,8 +88,11 @@ const MusicPlayer = () => {
         <button className="control-btn" onClick={prevTrack}>
           <StepBack />
         </button>
-        <button className="control-btn play-btn">
-          <Play />
+        <button
+          className="control-btn play-btn"
+          onClick={() => (isPlaying ? pause() : play())}
+        >
+          {isPlaying ? <Pause /> : <Play />}
         </button>
         <button className="control-btn" onClick={nextTrack}>
           <StepForward />
